@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import os
@@ -144,6 +146,12 @@ def download_file(filename):
     else:
         # 返回原始图片
         return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=True)
+
+
+@app.route('/test/<name>', methods=['GET'])
+def test_methods(name):
+    obj = {'name':name}
+    return json.dumps(obj)
 
 if __name__ == '__main__':
     # 应用启动时清理旧图片
