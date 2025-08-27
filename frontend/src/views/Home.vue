@@ -129,7 +129,7 @@ const uploadFiles = async (files) => {
       }
     }, 300)
 
-    const response = await axios.post('/upload', formData, {
+    const response = await axios.post('https://api1.limming.site/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -157,9 +157,9 @@ const uploadFiles = async (files) => {
 
 // 预览文件
 const previewFile = (file) => {
-  // 使用后端提供的URL，确保通过API代理
-  const originalUrl = `/api${file.original_url}`
-  const processedUrl = `/api${file.download_url}`
+  // 使用完整的远程API地址
+  const originalUrl = `https://api1.limming.site${file.original_url}`
+  const processedUrl = `https://api1.limming.site${file.download_url}`
   
   selectedFile.value = {
     originalPreviewUrl: originalUrl,
@@ -170,8 +170,8 @@ const previewFile = (file) => {
 
 // 下载处理后的文件
 const downloadFile = (url) => {
-  // 确保通过API代理访问后端
-  const apiUrl = url.startsWith('/api') ? url : `/api${url}`
+  // 使用完整的远程API地址
+  const apiUrl = url.startsWith('https://api1.limming.site') ? url : `https://api1.limming.site${url}`
   window.open(apiUrl, '_blank')
 }
 </script>

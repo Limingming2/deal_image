@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // 创建axios实例
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://api1.limming.site',
   timeout: 60000 // 请求超时时间
 })
 
@@ -45,7 +45,7 @@ export const imageApi = {
 
   // 获取下载链接
   getDownloadUrl(filename) {
-    return `/download/${filename}`
+    return `https://api1.limming.site/download/${filename}`
   }
 }
 
